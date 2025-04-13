@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "./components/Navbar/navbar";
+import navLinks from "./components/Navbar/navbar-link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Fixed Navbar */}
+        <div className='fixed top-0 left-0 w-full z-50 bg-white'>
+          <Navbar navlinks={navLinks} />
+        </div>
         {children}
       </body>
     </html>
-  );
+  )
 }
